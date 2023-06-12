@@ -1,10 +1,11 @@
 import { StringUtils, getStringInfo, toUpperCase } from "../app/util"
 
+// package.json에 watch모드(테스트 실행후 종료하지않고 변화가 있을때 마다 체크하는 기능nodemon과 비슷) test: "jest --watch"로 할수있다.
 // 테스트 함수들을 그룹화하여 실행할수있다.
 describe('utils test suit', () => {
 
 
-    describe.only('StringUtils test', () => {
+    describe('StringUtils test', () => {
         //hook 은 기본적으로 실행 컨텍스트 룰을 따르며 가장 좋은 방법은 사용하고자 하는 context단계에 두는것이 best임(describe안에 두는게 젤좋음)
         let sut:StringUtils;
 
@@ -61,6 +62,14 @@ describe('utils test suit', () => {
         //assert:
         expect(actual).toBe(expected)
     })
+
+    // test properties
+    // only => 해당 test만 실행됨
+    // ex) it.only('어쩌구 저쩌구', () => {테스트 내용})
+
+    // skip => 해당 test만 건너뜀
+    // ex => it.skip('어쩌구 저쩌구', () => {test 내용}) = xit('어쩌구 저쩌구', () => {test 내용})
+    // todo => test작성을 미완료한 test에 todo를 해놓으면 test 가동시 어떤 test를 완료 해야하는지 todo로 알수있다 (tdd에서 많이 사용됨) 
 
     describe('ToUpperCase example', () => {
         // each 키워드를 통해서 매개변수를 지정하고 $key이름을 통해 지정된 값들을 가져올수있다.
